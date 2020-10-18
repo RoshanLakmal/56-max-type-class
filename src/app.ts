@@ -1,8 +1,10 @@
 class Department {
-    public name: string;
+    // private id: string;
+    // private name: string;
     private employees: string[] =[];
-    constructor(n:string){
-        this.name = n;
+    constructor(private id:string, public name:string){
+        // this.id = id;
+        // this.name = n;
     }
 
     // describe(){
@@ -11,7 +13,7 @@ class Department {
 
     // More safe So will have an error in acountingCopy object becaues it is not look like department type Line - 23.
     describe(this:Department){
-        console.log('Deparment: '+this.name);
+        console.log(`Deparment: (${this.id}) : ${this.name}`);
     }
 
     addEmployee(employee:string){
@@ -24,7 +26,7 @@ class Department {
     }
 }
 
-const accounting = new Department("Accounting");
+const accounting = new Department('d1',"Accounting");
 console.log(accounting);
 accounting.describe();
 
@@ -39,5 +41,5 @@ accounting.addEmployee('Manu');
 
 // accounting.employees[2] = 'Anna'; // This is not good. To avoid we can add access modifiers 
 
-accounting.describe();
+
 accounting.printEmployeeInformation();
