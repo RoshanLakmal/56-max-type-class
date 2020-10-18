@@ -1,6 +1,6 @@
 class Department {
-    name: string;
-
+    public name: string;
+    private employees: string[] =[];
     constructor(n:string){
         this.name = n;
     }
@@ -13,6 +13,15 @@ class Department {
     describe(this:Department){
         console.log('Deparment: '+this.name);
     }
+
+    addEmployee(employee:string){
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation(){
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
 }
 
 const accounting = new Department("Accounting");
@@ -23,4 +32,12 @@ const acountingCopy = { describe: accounting.describe};
 // acountingCopy.describe(); // There is no name property in accountingCopy object so it is 'undefined'
 
 const acountingCopy1 = { describe: accounting.describe, name:'Roshan'};
-acountingCopy1.describe(); // There is name property in accountingCopy object so the output will be 'Deparment: Roshan'
+// acountingCopy1.describe(); // There is name property in accountingCopy object so the output will be 'Deparment: Roshan'
+
+accounting.addEmployee('Max');
+accounting.addEmployee('Manu');
+
+// accounting.employees[2] = 'Anna'; // This is not good. To avoid we can add access modifiers 
+
+accounting.describe();
+accounting.printEmployeeInformation();
